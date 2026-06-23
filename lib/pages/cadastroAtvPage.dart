@@ -35,6 +35,9 @@ class _CadastrarAtividadeState extends State<CadastrarAtividade> {
         prioridade: _prioridade!,
       ),
     );
+
+    atividadeNomeController.clear();
+    Navigator.of(context).pushReplacementNamed('/kanban');
   }
 
   @override
@@ -150,10 +153,7 @@ class _CadastrarAtividadeState extends State<CadastrarAtividade> {
                     SizedBox(height: 20),
 
                     TextButton(
-                      onPressed: () {
-                        criarTask();
-                        atividadeNomeController.clear();
-                      },
+                      onPressed: criarTask,
                       style: TextButton.styleFrom(
                         backgroundColor: Color(0xffa2ded0),
                         foregroundColor: Color(0xff333333),
