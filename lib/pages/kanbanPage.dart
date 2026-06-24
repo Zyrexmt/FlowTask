@@ -10,6 +10,11 @@ class KanbanPage extends StatefulWidget {
 }
 
 class _KanbanPageState extends State<KanbanPage> {
+  void initState() {
+    super.initState();
+    carregarTarefas().then((_) => setState(() {}));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,10 +26,14 @@ class _KanbanPageState extends State<KanbanPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Image.asset(
-              'assets/images/logomarca.png',
-              width: 100,
-              height: 100,
+            GestureDetector(
+              onTap: () =>
+                  Navigator.of(context).pushReplacementNamed('/home'),
+              child: Image.asset(
+                'assets/images/logomarca.png',
+                width: 100,
+                height: 100,
+              ),
             ),
             SizedBox(height: 20),
             Container(
@@ -53,7 +62,7 @@ class _KanbanPageState extends State<KanbanPage> {
                           _topCard(
                             'To do',
                             'A Fazer',
-                            Color(0xffededed),
+                            Color(0xffaed6f1),
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -85,7 +94,7 @@ class _KanbanPageState extends State<KanbanPage> {
                           _topCard(
                             'Doing',
                             'Em Andamento',
-                            Color(0xffededed),
+                            Color(0xffa2ded0),
                           ),
                           Container(
                             decoration: BoxDecoration(
@@ -234,6 +243,7 @@ class _KanbanPageState extends State<KanbanPage> {
                     onPressed: () {
                       if (tarefa.status > 0) {
                         setState(() => tarefa.status--);
+                        salvarTarefass();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -258,6 +268,7 @@ class _KanbanPageState extends State<KanbanPage> {
                     onPressed: () {
                       if (tarefa.status < 2) {
                         setState(() => tarefa.status++);
+                        salvarTarefass();
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(

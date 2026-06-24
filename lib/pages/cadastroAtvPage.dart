@@ -36,6 +36,8 @@ class _CadastrarAtividadeState extends State<CadastrarAtividade> {
       ),
     );
 
+    await salvarTarefass();
+
     atividadeNomeController.clear();
     Navigator.of(context).pushReplacementNamed('/kanban');
   }

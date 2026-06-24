@@ -15,4 +15,18 @@ class Tarefa {
   String toString() {
     return 'Tarefa(id: $id, nome: $nome, prioridade: $prioridade, status: $status)';
   }
+
+  Map<String, dynamic> toJson() => {
+    'id': id,
+    'nome': nome,
+    'prioridade': prioridade,
+    'status': status,
+  };
+
+  factory Tarefa.fromJson(Map<String, dynamic> json) => Tarefa(
+    id: json['id'],
+    nome: json['nome'],
+    prioridade: json['prioridade'],
+    status: json['status'],
+  );
 }
