@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:modulo_d1_v1/service/csvExport.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -41,14 +42,35 @@ class _HomePageState extends State<HomePage> {
             ),
             SizedBox(height: 100),
             // BUTTON 1
-            _linkButton('Cadastar atividade', () => Navigator.of(context).pushReplacementNamed('/cadastro-atividade')),
+            _linkButton(
+              'Cadastar atividade',
+              () => Navigator.of(
+                context,
+              ).pushReplacementNamed('/cadastro-atividade'),
+            ),
             SizedBox(height: 70),
             // BUTTON 2
-            _linkButton('Ver Kanban', () => Navigator.of(context).pushReplacementNamed('/kanban')),
+            _linkButton(
+              'Ver Kanban',
+              () => Navigator.of(
+                context,
+              ).pushReplacementNamed('/kanban'),
+            ),
             SizedBox(height: 70),
             // BUTTON 3
-            _linkButton('Gerar relatório', () {
-              print('Metodo indisponivel no momento.');
+            _linkButton('Gerar relatório', () async {
+              try {
+                final caminho = await exportarTarefasCSV();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('CSV exportado para: $caminho'),
+                  ),
+                );
+              } catch (e) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text('Erro ao exportar: $e')),
+                );
+              }
             }),
             SizedBox(height: 30),
           ],
