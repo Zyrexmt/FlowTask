@@ -32,7 +32,9 @@ Future<String> exportarTarefasCSV() async {
   }
 
   final directory = await getExternalStorageDirectory();
-  final file = File('${directory!.path}/tarefas_kanban.csv');
+  final agora = DateTime.now();
+  final timestamp = '${agora.year}${agora.month.toString().padLeft(2, '0')}${agora.day.toString().padLeft(2, '0')}_${agora.hour.toString().padLeft(2, '0')}${agora.minute.toString().padLeft(2, '0')}${agora.second.toString().padLeft(2, '0')}';
+  final file = File('${directory!.path}/tarefas_kanban_$timestamp.csv');
   await file.writeAsString(buffer.toString(), encoding: utf8);
 
   return file.path;

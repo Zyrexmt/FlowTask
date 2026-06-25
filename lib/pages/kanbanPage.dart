@@ -64,28 +64,48 @@ class _KanbanPageState extends State<KanbanPage> {
                             'A Fazer',
                             Color(0xffaed6f1),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xff333333),
-                                width: 1.5,
-                              ),
-                              borderRadius: BorderRadius.zero,
-                            ),
-                            height: 500,
-                            width: 130,
-                            child: ListView.builder(
-                              itemCount: tarefas
-                                  .where((t) => t.status == 0)
-                                  .toList()
-                                  .length,
-                              itemBuilder: (context, index) {
-                                final itens = tarefas
-                                    .where((t) => t.status == 0)
-                                    .toList();
-                                return _card(itens[index]);
-                              },
-                            ),
+                          DragTarget<Tarefa>(
+                            onAcceptWithDetails: (details) {
+                              setState(() {
+                                details.data.status = 0;
+                              });
+                              salvarTarefass();
+                            },
+                            builder:
+                                (
+                                  context,
+                                  candidateData,
+                                  rejectedData,
+                                ) {
+                                  final itens = tarefas
+                                      .where((t) => t.status == 0)
+                                      .toList();
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Color(0xff333333),
+                                        width: 1.5,
+                                      ),
+                                      borderRadius: BorderRadius.zero,
+                                    ),
+                                    height: 500,
+                                    width: 130,
+                                    child: ListView.builder(
+                                      itemCount: tarefas
+                                          .where((t) => t.status == 0)
+                                          .toList()
+                                          .length,
+                                      itemBuilder: (context, index) {
+                                        final itens = tarefas
+                                            .where(
+                                              (t) => t.status == 0,
+                                            )
+                                            .toList();
+                                        return _card(itens[index]);
+                                      },
+                                    ),
+                                  );
+                                },
                           ),
                         ],
                       ),
@@ -96,28 +116,48 @@ class _KanbanPageState extends State<KanbanPage> {
                             'Em Andamento',
                             Color(0xffa2ded0),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xff333333),
-                                width: 1.5,
-                              ),
-                              borderRadius: BorderRadius.zero,
-                            ),
-                            height: 500,
-                            width: 130,
-                            child: ListView.builder(
-                              itemCount: tarefas
-                                  .where((t) => t.status == 1)
-                                  .toList()
-                                  .length,
-                              itemBuilder: (context, index) {
-                                final itens = tarefas
-                                    .where((t) => t.status == 1)
-                                    .toList();
-                                return _card(itens[index]);
-                              },
-                            ),
+                          DragTarget<Tarefa>(
+                            onAcceptWithDetails: (details) {
+                              setState(() {
+                                details.data.status = 1;
+                              });
+                              salvarTarefass();
+                            },
+                            builder:
+                                (
+                                  context,
+                                  candidateData,
+                                  rejectedData,
+                                ) {
+                                  final itens = tarefas
+                                      .where((t) => t.status == 1)
+                                      .toList;
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Color(0xff333333),
+                                        width: 1.5,
+                                      ),
+                                      borderRadius: BorderRadius.zero,
+                                    ),
+                                    height: 500,
+                                    width: 130,
+                                    child: ListView.builder(
+                                      itemCount: tarefas
+                                          .where((t) => t.status == 1)
+                                          .toList()
+                                          .length,
+                                      itemBuilder: (context, index) {
+                                        final itens = tarefas
+                                            .where(
+                                              (t) => t.status == 1,
+                                            )
+                                            .toList();
+                                        return _card(itens[index]);
+                                      },
+                                    ),
+                                  );
+                                },
                           ),
                         ],
                       ),
@@ -128,28 +168,48 @@ class _KanbanPageState extends State<KanbanPage> {
                             'Concluído',
                             Color(0xffededed),
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Color(0xff333333),
-                                width: 1.5,
-                              ),
-                              borderRadius: BorderRadius.zero,
-                            ),
-                            height: 500,
-                            width: 130,
-                            child: ListView.builder(
-                              itemCount: tarefas
-                                  .where((t) => t.status == 2)
-                                  .toList()
-                                  .length,
-                              itemBuilder: (context, index) {
-                                final itens = tarefas
-                                    .where((t) => t.status == 2)
-                                    .toList();
-                                return _card(itens[index]);
-                              },
-                            ),
+                          DragTarget<Tarefa>(
+                            onAcceptWithDetails: (details) {
+                              setState(() {
+                                details.data.status = 2;
+                              });
+                              salvarTarefass();
+                            },
+                            builder:
+                                (
+                                  context,
+                                  candidateData,
+                                  rejectedData,
+                                ) {
+                                  final itens = tarefas
+                                      .where((t) => t.status == 2)
+                                      .toList();
+                                  return Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                        color: Color(0xff333333),
+                                        width: 1.5,
+                                      ),
+                                      borderRadius: BorderRadius.zero,
+                                    ),
+                                    height: 500,
+                                    width: 130,
+                                    child: ListView.builder(
+                                      itemCount: tarefas
+                                          .where((t) => t.status == 2)
+                                          .toList()
+                                          .length,
+                                      itemBuilder: (context, index) {
+                                        final itens = tarefas
+                                            .where(
+                                              (t) => t.status == 2,
+                                            )
+                                            .toList();
+                                        return _card(itens[index]);
+                                      },
+                                    ),
+                                  );
+                                },
                           ),
                         ],
                       ),
@@ -209,7 +269,7 @@ class _KanbanPageState extends State<KanbanPage> {
         cor = Colors.grey;
     }
 
-    return Card(
+    final cardContent = Card(
       color: cor,
       child: SizedBox(
         width: 110,
@@ -287,6 +347,16 @@ class _KanbanPageState extends State<KanbanPage> {
           ],
         ),
       ),
+    );
+
+    return LongPressDraggable<Tarefa>(
+      data: tarefa,
+      feedback: Material(
+        color: Colors.transparent,
+        child: Opacity(opacity: 0.8, child: cardContent),
+      ),
+      child: cardContent,
+      childWhenDragging: Opacity(opacity: 0.3, child: cardContent),
     );
   }
 
